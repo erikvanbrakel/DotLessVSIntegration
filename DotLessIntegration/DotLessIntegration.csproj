@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LessProject.DotLessIntegration</RootNamespace>
     <AssemblyName>DotLessIntegration</AssemblyName>
-    <SignAssembly>False</SignAssembly>
+    <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <ProjectGuid>{1AB64ACD-603E-4FC3-8B8D-30330EAC123E}</ProjectGuid>
@@ -56,6 +56,12 @@
     <Compile Include="DotLessLanguage.cs" />
     <Compile Include="DotLessScanner.cs" />
     <Compile Include="IEditor.cs" />
+    <Compile Include="LexerSrc\CharBuffer.cs" />
+    <Compile Include="LexerSrc\ICharacterBuffer.cs" />
+    <Compile Include="LexerSrc\Lexer.cs" />
+    <Compile Include="LexerSrc\Token.cs" />
+    <Compile Include="LexerSrc\TokenBuffer.cs" />
+    <Compile Include="LexerSrc\TokenKind.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="VSMacroRecorder.cs" />
     <Compile Include="Guids.cs" />
@@ -66,7 +72,6 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="DotLessIntegrationPackage.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PkgCmdID.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +103,9 @@
       <Isolated>False</Isolated>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
   <PropertyGroup>
     <!--
     To specify a different registry root to register your package, uncomment the TargetRegistryRoot
@@ -118,5 +126,7 @@
   -->
   <PropertyGroup>
     <PreBuildEvent>"C:\Program Files\Microsoft Visual Studio 2008 SDK\VisualStudioIntegration\Tools\Bin\RegRiched20.exe"</PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
