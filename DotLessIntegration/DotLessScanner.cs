@@ -1,4 +1,5 @@
-using LessProject.DotLessIntegration.LexerSrc;
+using System.Linq;
+using LessProject.DotLessIntegration.LexerWithPegSupport;
 using Microsoft.VisualStudio.Package;
 
 namespace LessProject.DotLessIntegration
@@ -9,39 +10,69 @@ namespace LessProject.DotLessIntegration
 
         public void SetSource(string source, int offset)
         {
-            _lex = new Lexer(new StringCharacterBuffer(source.Substring(offset), 3));
+            _lex = new Lexer(source.Substring(offset));
         }
 
         public bool ScanTokenAndProvideInfoAboutIt(TokenInfo tokenInfo, ref int state)
         {
             var token = _lex.GetNextToken();
-            switch(token.Kind)
+            if (token == null) return false;
+            switch (token.TokenType)
             {
-                case TokenKind.EOF:
-                    return false;
-                case TokenKind.LEFTCURLY:
-                case TokenKind.RIGHTCURLY:
+                case nLess.EnLess.LeftCurly:
+                case nLess.EnLess.RightCurly:
+                case nLess.EnLess.LeftSquare:
+                case nLess.EnLess.RightSquare:
+                case nLess.EnLess.SemiColon:
+                case nLess.EnLess.Comma:
+                    tokenInfo.Color = TokenColor.Identifier;
+                    tokenInfo.Type = TokenType.Identifier;
+                    tokenInfo.Trigger = TokenTriggers.None;
+                    tokenInfo.StartIndex = token.Start;
+                    tokenInfo.EndIndex = token.End;
+                    state = (int)States.Default;
+                    break;
+                case nLess.EnLess.Colon:
+                    state = (int) States.DefiningPropertyValue;
+                    tokenInfo.Color = TokenColor.Identifier;
+                    tokenInfo.Type = TokenType.Identifier;
+                    tokenInfo.Trigger = TokenTriggers.MethodTip;
+                    tokenInfo.StartIndex = token.Start;
+                    tokenInfo.EndIndex = token.End;
+                    break;
+                case nLess.EnLess.Class:
+                case nLess.EnLess.Id:
+                case nLess.EnLess.Variable:
                     tokenInfo.Color = TokenColor.String;
                     tokenInfo.Type = TokenType.String;
                     tokenInfo.Trigger = TokenTriggers.None;
-                    tokenInfo.StartIndex = token.StartIndex;
-                    tokenInfo.EndIndex = token.EndIndex;
+                    tokenInfo.StartIndex = token.Start;
+                    tokenInfo.EndIndex = token.End;
+                    state = (int)States.Default;
                     break;
-                case TokenKind.CLASS:
-                case TokenKind.IDENTIFIER:
-                case TokenKind.VARIABLE:
-                    if (tokenInfo.EndIndex == token.Text.Length) return false;
-                    tokenInfo.Color = TokenColor.Keyword;
-                    tokenInfo.Type = TokenType.Keyword;
+                case nLess.EnLess.Ident:
+                    if (state == (int)States.DefiningPropertyValue)
+                    {
+                        tokenInfo.Color = TokenColor.Keyword;
+                        tokenInfo.Type = TokenType.Keyword;
+                    }
+                    else
+                    {
+                        tokenInfo.Color = TokenColor.String;
+                        tokenInfo.Type = TokenType.String;
+                    }
                     tokenInfo.Trigger = TokenTriggers.None;
-                    tokenInfo.StartIndex = token.StartIndex;
-                    tokenInfo.EndIndex = token.EndIndex;
-                    break;
-                case TokenKind.COLON:
-                    tokenInfo.Trigger = TokenTriggers.MethodTip;
-                    break;
+                    tokenInfo.StartIndex = token.Start;
+                    tokenInfo.EndIndex = token.End;
+                    break; 
             }
+            
             return true;
+        }
+        enum States
+        {
+            Default = 1,
+            DefiningPropertyValue = 2
         }
     }
 }

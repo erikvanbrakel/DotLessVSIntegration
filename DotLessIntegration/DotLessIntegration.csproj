@@ -9,7 +9,8 @@
     <RootNamespace>LessProject.DotLessIntegration</RootNamespace>
     <AssemblyName>DotLessIntegration</AssemblyName>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <ProjectGuid>{1AB64ACD-603E-4FC3-8B8D-30330EAC123E}</ProjectGuid>
   </PropertyGroup>
@@ -41,6 +42,10 @@
     <Reference Include="Microsoft.VisualStudio.TextManager.Interop" />
     <Reference Include="Microsoft.VisualStudio.Shell.9.0" />
     <Reference Include="Microsoft.VisualStudio.TextManager.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="PegBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\PegBase.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -62,7 +67,10 @@
     <Compile Include="LexerSrc\Token.cs" />
     <Compile Include="LexerSrc\TokenBuffer.cs" />
     <Compile Include="LexerSrc\TokenKind.cs" />
+    <Compile Include="LexerWithPegSupport\C#\nLess.cs" />
+    <Compile Include="LexerWithPegSupport\Lexer.cs" />
     <Compile Include="NativeMethods.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VSMacroRecorder.cs" />
     <Compile Include="Guids.cs" />
     <Compile Include="Resources.Designer.cs">
@@ -91,7 +99,8 @@
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Key.snk" />
+    <None Include="LexerWithPegSupport\Less.gram" />
+    <None Include="LexerWithPegSupport\LessSL.gram" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="tom">
@@ -102,9 +111,6 @@
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
   </ItemGroup>
   <PropertyGroup>
     <!--

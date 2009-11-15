@@ -1,0 +1,29 @@
+﻿<<Grammar Name="nLess">>
+ //******************************************** Less
+^^Parse:  (Syntax / Identifier / CommentPart) * ;
+Syntax: ws (LeftCurly / RightCurly / LeftSquare / RightSquare / Comma / SemiColon / Colon) ws;
+^^LeftCurly : '{';
+^^RightCurly : '}';
+^^LeftSquare : '[';
+^^RightSquare : ']';
+^^Comma : ',';
+^^SemiColon : ';';
+^^Colon : ':';
+Identifier: ws (Variable / Class / Id / Ident) ws;
+^^Variable: '@' [-_a-zA-Z0-9]+; 
+^^Class:  '.' [_a-zA-Z] [-a-zA-Z0-9_]*;
+^^Id: '#' [_a-zA-Z] [-a-zA-Z0-9_]*;
+^^Ident: [-_a-zA-Z0-9]+;
+CommentPart : DoubleSlashComment / SlashStarComment;
+^^DoubleSlashComment : '/' '/'  (!([\n]/[\r\n]/[\r]).)*;
+SlashStarComment: SlashStarCommentStart / SlashStarCommentEnd;
+^^SlashStarCommentStart : '/' '*' (!(SlashStarCommentEnd).)*;
+^^SlashStarCommentEnd : '*' '/';
+//******************************************** Common
+WS: [ \r\n\t]+;
+ws: [ \r\n\t]*;
+s:  [ ]*;
+S:  [ ]+;
+ns: ![ ;\n] .;
+<</Grammar>>
+
