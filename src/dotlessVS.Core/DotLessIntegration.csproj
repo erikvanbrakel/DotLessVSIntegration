@@ -142,7 +142,7 @@
     tag and specify a registry root in it.
     <TargetRegistryRoot></TargetRegistryRoot>
     -->
-    <RegisterOutputPackage>true</RegisterOutputPackage>
+    <RegisterOutputPackage>false</RegisterOutputPackage>
     <RegisterWithCodebase>true</RegisterWithCodebase>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -155,7 +155,8 @@
   </Target>
   -->
   <PropertyGroup>
-    <PreBuildEvent>"C:\Program Files\Microsoft Visual Studio 2008 SDK\VisualStudioIntegration\Tools\Bin\RegRiched20.exe"</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
