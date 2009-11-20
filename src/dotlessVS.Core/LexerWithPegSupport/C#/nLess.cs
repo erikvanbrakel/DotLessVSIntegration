@@ -6,8 +6,7 @@ using System.IO;
 using System.Text;
 namespace nLess
 {
-      
-      enum EnLess{Parse= 1, Syntax= 2, LeftCurly= 3, RightCurly= 4, LeftSquare= 5, 
+    public enum EnLess{Parse= 1, Syntax= 2, LeftCurly= 3, RightCurly= 4, LeftSquare= 5, 
                    RightSquare= 6, Comma= 7, SemiColon= 8, Colon= 9, Identifier= 10, 
                    Variable= 11, Class= 12, Id= 13, Ident= 14, CommentPart= 15, 
                    DoubleSlashComment= 16, SlashStarComment= 17, SlashStarCommentStart= 18, 

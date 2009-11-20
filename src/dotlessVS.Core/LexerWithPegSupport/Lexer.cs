@@ -51,7 +51,7 @@ namespace LessProject.DotLessIntegration.LexerWithPegSupport
             public int Start { get; set; }
             public int End { get; set; }
             internal PegNode PegNode;
-            internal EnLess TokenType { get; private set; }
+            public EnLess TokenType { get; private set; }
             public string Text { get; private set; }
             private string _src;
 
