@@ -8,8 +8,8 @@
     <ProjectGuid>{CD898EF7-2416-4DC1-9939-52FCCD246B7E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>dotlessVS.Tests</RootNamespace>
-    <AssemblyName>dotlessVS.Tests</AssemblyName>
+    <RootNamespace>dotlessVS.Test</RootNamespace>
+    <AssemblyName>dotlessVS.Test</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>false</SignAssembly>
@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="nunit.framework, Version=2.5.1.9189, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\NUnit\nunit.framework.dll</HintPath>
+      <HintPath>..\..\lib\NUnit\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
