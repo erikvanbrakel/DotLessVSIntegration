@@ -34,6 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EnvDTE" />
+    <Reference Include="Interop.tom, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Interop.tom.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\VisualStudioSDK\Microsoft.VisualStudio.OLE.Interop.dll</HintPath>
@@ -125,16 +129,6 @@
   <ItemGroup>
     <None Include="LexerWithPegSupport\Less.gram" />
     <None Include="LexerWithPegSupport\LessSL.gram" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="tom">
-      <Guid>{8CC497C9-A1DF-11CE-8098-00AA0047BE5D}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-    </COMReference>
   </ItemGroup>
   <PropertyGroup>
     <!--
