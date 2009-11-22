@@ -8,9 +8,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LessProject.DotLessIntegration</RootNamespace>
     <AssemblyName>DotLessIntegration</AssemblyName>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>Key.pfx</AssemblyOriginatorKeyFile>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <ProjectGuid>{1AB64ACD-603E-4FC3-8B8D-30330EAC123E}</ProjectGuid>
   </PropertyGroup>
@@ -116,7 +115,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="VSPackage.resx">
+    <EmbeddedResource Include="DotLessIntegrationPackage.resx">
       <MergeWithCTO>true</MergeWithCTO>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -127,6 +126,7 @@
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Key.pfx" />
     <None Include="LexerWithPegSupport\Less.gram" />
     <None Include="LexerWithPegSupport\LessSL.gram" />
   </ItemGroup>
@@ -136,11 +136,11 @@
     tag and specify a registry root in it.
     <TargetRegistryRoot></TargetRegistryRoot>
     -->
-    <RegisterOutputPackage>false</RegisterOutputPackage>
+    <RegisterOutputPackage>true</RegisterOutputPackage>
     <RegisterWithCodebase>true</RegisterWithCodebase>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <!--<Import Project="..\Microsoft.VsSDK.targets" />-->
+  <Import Project="D:\Program Files\MSBuild\Microsoft\VisualStudio\v9.0\VSSDK\Microsoft.VsSDK.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

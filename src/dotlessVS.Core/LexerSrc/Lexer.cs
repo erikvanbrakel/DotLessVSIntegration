@@ -118,7 +118,7 @@ namespace LessProject.DotLessIntegration.LexerSrc
         private string ReadIdentifierToEnd()
         {
             var s = new StringBuilder();
-            while (char.IsLetter((char)buffer.Peek(1)) || char.IsNumber((char)buffer.Peek(1)) || (char)buffer.Peek(1) == '_' || (char)buffer.Peek(1) == '/' || (char)buffer.Peek(1) == '-' || (char)buffer.Peek(1) == '.')
+            while (char.IsLetter((char)buffer.Peek(1)) || char.IsNumber((char)buffer.Peek(1)) || (char)buffer.Peek(1) == '_' || (char)buffer.Peek(1) == '/' || (char)buffer.Peek(1) == '-' || (char)buffer.Peek(1) == '.' || (char)buffer.Peek(1) == '%')
             {
                 s.Append((char)buffer.Peek(1));
                 buffer.Load();

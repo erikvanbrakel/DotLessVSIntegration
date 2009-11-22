@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotLessIntegration", "dotle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotlessVS.Test", "dotlessVS.Test\dotlessVS.Test.csproj", "{CD898EF7-2416-4DC1-9939-52FCCD246B7E}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "dotlessVS.Setup", "dotlessVS.Setup\dotlessVS.Setup.vdproj", "{21DE10B7-00F8-4759-8013-DFFB273E824B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,8 @@ Global
 		{CD898EF7-2416-4DC1-9939-52FCCD246B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD898EF7-2416-4DC1-9939-52FCCD246B7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD898EF7-2416-4DC1-9939-52FCCD246B7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21DE10B7-00F8-4759-8013-DFFB273E824B}.Debug|Any CPU.ActiveCfg = Debug
+		{21DE10B7-00F8-4759-8013-DFFB273E824B}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
