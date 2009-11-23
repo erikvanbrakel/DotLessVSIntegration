@@ -1,5 +1,10 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+    <WixToolPath>../../lib/WiX 3/</WixToolPath>
+    <WixTargetsPath>$(WixToolPath)Wix.targets</WixTargetsPath>
+    <WixTasksPath>$(WixToolPath)wixtasks.dll</WixTasksPath>
+  </PropertyGroup>
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>3.0</ProductVersion>

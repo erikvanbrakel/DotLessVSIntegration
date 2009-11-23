@@ -20,7 +20,7 @@ task Clean {
 }
 
 task Installer -depends Merge {
-    msbuild $source_dir\dotlessVS.WixSetup\dotlessVS.WixSetup.wixproj /p:OutDir=$build_dir/Installer/ /p:Configuration=$config
+    msbuild $source_dir\dotlessVS.WixSetup\dotlessVS.WixSetup.wixproj /p:OutDir=$build_dir /p:Configuration=$config
 }
 
 task Init -depends Clean {
