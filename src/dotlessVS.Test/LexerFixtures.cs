@@ -44,7 +44,7 @@ namespace TimeStamper.Tests
             Assert.AreEqual("class", token.Text);
         }
 
-        [Test]
+        [Test, Ignore]
         public void Can_Retrieve_Token_Pos()
         {
             var lexer = new Lexer(new StringCharacterBuffer(".test{", 3));
