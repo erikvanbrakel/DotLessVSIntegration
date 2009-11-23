@@ -18,9 +18,9 @@ namespace LessProject.DotLessIntegration
 {
     static class GuidList
     {
-        public const string guidDotLessIntegrationPkgString = "8e383b66-5101-46b1-bce9-765e6f6d76b3";
-        public const string guidDotLessIntegrationCmdSetString = "68579ca5-0d1a-4b39-9f21-6e6fba4305a0";
-        public const string guidDotLessIntegrationEditorFactoryString = "604e9e5a-19fc-4e67-b238-f8d3229f4dba";
+        public const string guidDotLessIntegrationPkgString = "DF8C7FAD-2BF3-45ae-B78B-037B8C4A5DE8";
+        public const string guidDotLessIntegrationCmdSetString = "40D57D21-E2F5-45df-9732-430397A925D1";
+        public const string guidDotLessIntegrationEditorFactoryString = "BCC05326-A4D6-4821-B0D3-9ED51E1A27DD";
 
         public static readonly Guid guidDotLessIntegrationCmdSet = new Guid(guidDotLessIntegrationCmdSetString);
         public static readonly Guid guidDotLessIntegrationEditorFactory = new Guid(guidDotLessIntegrationEditorFactoryString);

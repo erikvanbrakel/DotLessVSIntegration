@@ -45,7 +45,7 @@ namespace LessProject.DotLessIntegration
     // package needs to have a valid load key (it can be requested at 
     // http://msdn.microsoft.com/vstudio/extend/). This attributes tells the shell that this 
     // package has a load key embedded in its resources.
-    [ProvideLoadKey("Standard", "1.0.0.0", ".Less Visual Studio Integration", "dotless Project", 104)]
+    [ProvideLoadKey("Standard", "1.0.0.0", "dotless Visual Studio Integration", "dotless Project", 104)]
     // This attribute is needed to let the shell know that this package exposes some menus.
     [Guid(GuidList.guidDotLessIntegrationPkgString)]
     [ProvideLanguageService(typeof(DotLessLanguage), "DotLess", 100,
