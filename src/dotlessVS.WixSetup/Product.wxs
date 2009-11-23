@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Product Name=".Less Visual Studio Integration" Id="C6AFADD6-7D38-499a-8D89-BC7267DFE18C" UpgradeCode="BDFCC4D2-F068-4ee0-8136-59BDE1E250C0"
+        Language="1033" Codepage="1252" Version="1.0.0" Manufacturer=".Less Project">
+       
+        <Package Id="*" Keywords="Installer" Description=".Less Visual Studio Integration Installer" InstallerVersion="200" Languages="1033" Compressed="yes" SummaryCodepage="1252" />
+        <Media Id="1" Cabinet="dotless.cab" EmbedCab="yes" />
+        <Directory Id="TARGETDIR" Name="SourceDir">
+
+            <Component Id="RegistryComponent" Guid="1039514D-7172-4742-87FF-1205734B2996">
+                <!--
+                [HKEY_LOCAL_MACHINE\Software\Microsoft\VisualStudio\9.0\Packages\{df8c7fad-2bf3-45ae-b78b-037b8c4a5de8}]
+                @="LessProject.DotLessIntegration.DotLessIntegrationPackage, DotLessIntegration, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+                "InprocServer32"="C:\\Windows\\SYSTEM32\\MSCOREE.DLL"
+                "Class"="LessProject.DotLessIntegration.DotLessIntegrationPackage"
+                "CodeBase"="c:\Program Files\dotless Project\dotlessVS.Setup\DotLessIntegration.dll"
+
+                [HKEY_LOCAL_MACHINE\Software\Microsoft\VisualStudio\9.0\Packages\{df8c7fad-2bf3-45ae-b78b-037b8c4a5de8}]
+                "ID"=dword:00000068
+                "MinEdition"="Standard"
+                "ProductVersion"="1.0.0.0"
+                "ProductName"="dotless Visual Studio Integration"
+                "CompanyName"="dotless Project"
+                -->
+                <RegistryKey Action="create" Root="HKLM" Key="Software\Microsoft\VisualStudio\9.0\Packages\{df8c7fad-2bf3-45ae-b78b-037b8c4a5de8}">
+                    <RegistryValue Value="LessProject.DotLessIntegration.DotLessIntegrationPackage, DotLessIntegration, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" />
+                    <RegistryValue Name="InprocServer32" Value="[SystemFolder]MSCOREE.DLL" Type="string" />
+                    <RegistryValue Name="Class" Value="LessProject.DotLessIntegration.DotLessIntegrationPackage" Type="string"/>
+                    <RegistryValue Name="CodeBase" Value="[INSTALLDIR]DotLessIntegration.dll" Type="string" />
+                    <RegistryValue Name="ID" Value="104" Type="integer" />
+                    <RegistryValue Name="MinEdition" Value="Standard" Type="string" />
+                    <RegistryValue Name="ProductVersion" Value="1.0.0.0" Type="string" />
+                    <RegistryValue Name="ProductName" Value="dotless Visual Studio Integration" Type="string" />
+                    <RegistryValue Name="CompanyName" Value="dotless Project" Type="string" />
+                </RegistryKey>
+
+                <!--
+                [HKEY_LOCAL_MACHINE\Software\Microsoft\VisualStudio\9.0\Languages\File Extensions\.less]
+                @="{2a870b66-0dfa-4470-a873-048fb220b4df}"                
+                -->
+                <RegistryKey Action="create" Root="HKLM" Key="Software\Microsoft\VisualStudio\9.0\Languages\File Extensions\.less">
+                    <RegistryValue Value="{2a870b66-0dfa-4470-a873-048fb220b4df}" Type="string" />
+                </RegistryKey>
+                
+                <!--
+                [HKEY_LOCAL_MACHINE\Software\Microsoft\VisualStudio\9.0\Languages\Language Services\DotLess]
+                @="{2a870b66-0dfa-4470-a873-048fb220b4df}"
+                "Package"="{df8c7fad-2bf3-45ae-b78b-037b8c4a5de8}"
+                "LangResID"=dword:00000064
+                "ShowCompletion"=dword:00000001
+                "ShowMatchingBrace"=dword:00000001
+                "CodeSense"=dword:00000001
+                "MatchBraces"=dword:00000001
+                "EnableCommenting"=dword:00000001
+                "DefaultToInsertSpaces"=dword:00000001                
+                -->
+                <RegistryKey Action="create" Root="HKLM" Key="Software\Microsoft\VisualStudio\9.0\Languages\Language Services\DotLess">
+                    <RegistryValue Value="{2a870b66-0dfa-4470-a873-048fb220b4df}" Type="string" />
+                    <RegistryValue Name="Package" Value="{df8c7fad-2bf3-45ae-b78b-037b8c4a5de8}" Type="string" />
+                    <RegistryValue Name="LangResID" Value="100" Type="integer" />
+                    <RegistryValue Name="ShowCompletion" Value="1" Type="integer" />
+                    <RegistryValue Name="ShowMatchingBrace" Value="1" Type="integer" />
+                    <RegistryValue Name="CodeSense" Value="1" Type="integer" />
+                    <RegistryValue Name="MatchBraces" Value="1" Type="integer" />
+                    <RegistryValue Name="EnableCommenting" Value="1" Type="integer" />
+                    <RegistryValue Name="DefaultToInsertSpaces" Value="1" Type="integer" />
+                </RegistryKey>
+
+                <!--
+                [HKEY_LOCAL_MACHINE\Software\Microsoft\VisualStudio\9.0\Services\{2a870b66-0dfa-4470-a873-048fb220b4df}]
+                @="{df8c7fad-2bf3-45ae-b78b-037b8c4a5de8}"
+                "Name"="DotLess"
+                -->
+                <RegistryKey Action="create" Root="HKLM" Key="Software\Microsoft\VisualStudio\9.0\Services\{2a870b66-0dfa-4470-a873-048fb220b4df}">
+                    <RegistryValue Value="{df8c7fad-2bf3-45ae-b78b-037b8c4a5de8}" Type="string" />
+                    <RegistryValue Name="Name" Value="DotLess" Type="string" />
+                </RegistryKey>
+
+            </Component>
+
+            <Directory Id="ProgramFilesFolder" Name="PFiles">
+                <Directory Id="dotless" Name=".Less Project">
+                    <Directory Id="INSTALLDIR" Name=".Less Visual Studio Integration 1.0.0">
+                        
+                        <Component Id="MainDLL" Guid="E98CAAF4-EE19-4ca1-83E8-661DA593969F">
+                            <File Id="dotlessIntegration.dll" Name="dotlessIntegration.dll" Source="../../build/dotlessIntegration.dll" KeyPath="yes" DiskId="1" />
+                        </Component>
+                    </Directory>
+                </Directory>
+            </Directory>
+        </Directory>
+
+        <Feature Id="Complete" Level="1" Title=".Less Visual Studio Integration 1.0.0" Description="The complete package" ConfigurableDirectory="INSTALLDIR" Absent="disallow">
+            <Feature Id="MainPackage" Title=".Less Integration Core" Description="The main integration package" Level="1" Absent="disallow">
+                <ComponentRef Id="MainDLL" />
+                <ComponentRef Id="RegistryComponent" />
+            </Feature>
+        </Feature>
+
+        <WixVariable Id="WixUILicense" Value="../../License.rtf" />
+
+        <UIRef Id="WixUI_Mondo" />
+        <UIRef Id="WixUI_ErrorProgressText" />
+        <Property Id="WIXUI_INSTALLDIR" Value="TOP_LEVEL_DIR" />
+    </Product>
+    
+</Wix>
