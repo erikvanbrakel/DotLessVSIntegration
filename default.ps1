@@ -12,11 +12,15 @@ properties {
 	$version = Get-Git-Version
 }
 
-task default -depends Release
+task default -depends Installer
 
 task Clean {
     remove-item -force -recurse $build_dir -ErrorAction SilentlyContinue 
     remove-item -force -recurse $release_dir -ErrorAction SilentlyContinue 
+}
+
+task Installer -depends Merge {
+    msbuild $source_dir\dotlessVS.WixSetup\dotlessVS.WixSetup.wixproj /p:OutDir=$build_dir/Installer/ /p:Configuration=$config
 }
 
 task Init -depends Clean {
@@ -68,12 +72,13 @@ task Test -depends Build {
 task Merge -depends Build {
     $old = pwd
     cd $build_dir
-    $filename = "dotless.Core.dll"
+    $filename = "DotLessIntegration.dll"
     Remove-Item $filename-partial.dll -ErrorAction SilentlyContinue
     Rename-Item $filename $filename-partial.dll
     write-host "Executing ILMerge"
     & $lib_dir\ilmerge\ILMerge.exe $filename-partial.dll `
         PegBase.dll `
+        Interop.tom.dll `
         /out:$filename `
         /internalize `
         /t:library
