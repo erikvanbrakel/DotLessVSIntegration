@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="110" xml:space="preserve">
-    <value>.Less Visual Studio Integration</value>
+    <value>Less Visual Studio Integration</value>
   </data>
   <data name="112" xml:space="preserve">
     <value>Intentionally left blank</value>
@@ -148,5 +148,18 @@
   <data name="104" xml:space="preserve">
     <value>RKMAJDDTQJICARDHC1R0CDZACAIHEZEIRARRK3HIQ1RQR3EDQ0E3DPA9EZM8K2E9IMA1J0EDRJM8PIHZIAECIIM3EHQJE3J8R1AZETMKAIRCCJP3QJAEPQM3JCA1JAQT</value>
     <comment>Package load key</comment>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="600" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\GenericPackage.ico;    System.Drawing.Icon, System.Drawing, Version=2.0.0.0,    Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="113" xml:space="preserve">
+    <value>The .Less Visual Studio integration package. For more information, visit http://www.dotlesscss.com/</value>
+  </data>
+  <data name="500" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\genericpackage.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="200" xml:space="preserve">
+    <value>TEST</value>
   </data>
 </root>

@@ -15,11 +15,14 @@
 // VsPkg.cs : Implementation of DotLessIntegration
 //
 
+using System;
 using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace LessProject.DotLessIntegration
 {
@@ -57,7 +60,8 @@ namespace LessProject.DotLessIntegration
         ShowMatchingBrace = true)]
     [ProvideLanguageExtension(typeof(DotLessLanguage), ".less")]
     [ProvideService(typeof(DotLessLanguage), ServiceName = "DotLess")]
-    public sealed class DotLessIntegrationPackage : Package
+    [InstalledProductRegistration(true, null, null, null)]
+    public sealed class DotLessIntegrationPackage : Package, IVsInstalledProduct
     {
 
         private DotLessLanguage language;
@@ -84,6 +88,51 @@ namespace LessProject.DotLessIntegration
             container.AddService(typeof(DotLessLanguage), language, true);
         }
         #endregion
+
+        public int IdBmpSplash(out uint pIdBmp)
+        {
+            pIdBmp = 500;
+            return VSConstants.S_OK;
+        }
+
+        public int OfficialName(out string pbstrName)
+        {
+            pbstrName = GetResourceString("@110");
+            return VSConstants.S_OK;
+        }
+
+        public int ProductID(out string pbstrPID)
+        {
+            pbstrPID = GuidList.guidDotLessIntegrationPkgString;
+            return VSConstants.S_OK;
+        }
+
+        public int ProductDetails(out string pbstrProductDetails)
+        {
+            pbstrProductDetails = GetResourceString("@113");
+            return VSConstants.S_OK;
+        }
+
+        public int IdIcoLogoForAboutbox(out uint pIdIco)
+        {
+            pIdIco = 600;
+            return VSConstants.S_OK;
+        }
+
+        public string GetResourceString(string resourceName)
+        {
+            string resourceValue;
+            var resourceManager = GetService(typeof(SVsResourceManager)) as IVsResourceManager;
+            if (resourceManager == null)
+            {
+                throw new InvalidOperationException(
+                    "Could not get SVsResourceManager service. Make sure that the package is sited before calling this method");
+            }
+            var packageGuid = GetType().GUID;
+            int hr = resourceManager.LoadResourceString(ref packageGuid, -1, resourceName, out resourceValue);
+            ErrorHandler.ThrowOnFailure(hr);
+            return resourceValue;
+        }
 
     }
 }

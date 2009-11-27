@@ -70,7 +70,7 @@ namespace LessProject.DotLessIntegration
                         case nLess.EnLess.Comma:
                             tokenInfo.Color = TokenColor.Identifier;
                             tokenInfo.Type = TokenType.Identifier;
-                            tokenInfo.Trigger = TokenTriggers.None;
+                            tokenInfo.Trigger = TokenTriggers.MatchBraces;
                             tokenInfo.StartIndex = token.Start;
                             tokenInfo.EndIndex = token.End;
                             state = (int) States.Default;

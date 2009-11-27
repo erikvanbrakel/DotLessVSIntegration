@@ -130,7 +130,15 @@
     <None Include="LexerWithPegSupport\Less.gram" />
     <None Include="LexerWithPegSupport\LessSL.gram" />
   </ItemGroup>
-  <PropertyGroup>
+  <ItemGroup>
+    <None Include="Resources\GenericPackage.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\GenericPackage.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <PropertyGroup Condition="'$(TeamCity)' == ''">
     <!--
     To specify a different registry root to register your package, uncomment the TargetRegistryRoot
     tag and specify a registry root in it.
@@ -140,7 +148,7 @@
     <RegisterWithCodebase>true</RegisterWithCodebase>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <!--<Import Project="D:\Program Files\MSBuild\Microsoft\VisualStudio\v9.0\VSSDK\Microsoft.VsSDK.targets" />-->
+  <Import Condition=" '$(TeamCity)' == '' " Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\VSSDK\Microsoft.VsSDK.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
