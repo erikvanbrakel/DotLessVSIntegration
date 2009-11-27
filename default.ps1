@@ -48,7 +48,7 @@ task Init -depends Clean {
 }
 
 task Build -depends Init {
-	msbuild $source_dir\dotlessVS.Core\DotLessIntegration.csproj /p:OutDir=$build_dir /p:Configuration=$config
+	msbuild $source_dir\dotlessVS.Core\DotLessIntegration.csproj /p:OutDir=$build_dir /p:Configuration=$config /p:Teamcity=true
 }
 
 task Test -depends Build {
